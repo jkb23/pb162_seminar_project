@@ -3,7 +3,7 @@
 The exercise focused on basic work with attributes, methods, arrays, and on the definition of custom constructors. 
 
 1.  Modify the `Vertex2D` class as follows:
-    *   Enable to create a vertex by directly providing two coordinates, e.g., by calling `new Vertex2D(1.2, 3.8)`.
+    *   The vertex can only be instantiated by providing two coordinates, e.g., by calling `new Vertex2D(1.2, 3.8)`.
     *   Rename the `getInfo()` method to `toString()`.
         > `toString()` is the standard method that exists in every class (we'll learn later how it is arranged).
 		> Therefore, add the annotation `@Override` above the method header.
