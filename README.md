@@ -15,8 +15,8 @@ Iteration for getting acquainted with objects and encapsulation.
         > Choose appropriate names that reflect the names of the attributes you have selected!
 
     *   Method `String getInfo()` returns a formatted coordinate description according to the following example:
-        For a point at the coordinates x=2.0, y=3.0 returns **10 characters** (space included):
-        `[2.0, 3.0]`.
+        For a point at the coordinates x=2.1 y=3.45 returns **11 characters** (space included): 
+		`[2.1, 3.45]`.
     *   Method `double sumCoordinates()` returns the sum of the coordinates *X* and *Y*.
     *   Method `void move(Vertex2D vertex)` takes another 2D point as the input parameter and shifts the vertex by the `vertex` coordinates. For example, calling the `move` mwthod on vertex with coordinates `[2, 3]` and input parameter `[1, 1]` shifts the vertex `[2, 3]` into `[3, 4]`.
     *   Adjust the visibility of attributes and methods to meet encapsulation conditions.
