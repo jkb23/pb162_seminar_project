@@ -38,7 +38,7 @@ Exercise focused on static methods, implementation and use of interfaces.
 6.  In the `geometry` package, create the `Snowman` class:
     *   Our snowman consists of any **four** circular objects, i.e., circles, squares, etc. stacked on top of each other. However, the number can be easily changed at the compilation time (define it as a public constant). The snowman has no hands for simplicity. The "balls" of the snowman shrink upwards. 
     *   The constructor will take as its first parameter a parameter of type `Circular`, which represents the lower sphere.
-	*   The second parameter of the constructor will be the reduction factor (real number of the range `(0..1>`). The upper parts of the snowman will shrink by this factor. If the input parameter is not in the required range, the named non-public constant `0.8` is used instead.
+	*   The second parameter of the constructor will be the reduction factor (real number of the range `(0..1>`). The upper parts of the snowman will shrink by this factor. If the input parameter is not in the required range, the named **non-public constant** `0.8` is used instead.
     *   The whole snowman is created in the constructor. It will consist of a circular object that we received. Above it will be circles (`Circle`) gradually decreasing by a given factor. 
 	*   Don't be afraid to split the constructor code into smaller private methods.
     *   The `Circular[] getBalls()` method returns an array of all "show balls" from the lowest to the highest.
