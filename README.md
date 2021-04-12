@@ -50,7 +50,7 @@ Our goal is to propose an object decomposition reflecting these observations. Mo
     *   An inherited `getEdgeLength()` method would not work properly for a circle because the length of the edges should be 0
         &mdash; override it.
 
-6.  Refactor the `Square` class to extend the `GeneralRegularPolygon` class, and then clean it up (remove all unnecessary attributes and methods). The `getVertex` method will work as defined in the interface, i.e., the vertex is computed likewise in the other regular polygons.
+6.  Refactor the `Square` class to extend the `GeneralRegularPolygon` class, and then clean it up (remove all unnecessary attributes and methods). The `getVertex` method will work as defined in the `RegularPolygon` interface, which defines the common behavior for all implementations.
 
 7.  Edit the `Snowman` class:
 	> For a better understanding of snowman polygons, take a look at the sample _Draw_ screenshot.
