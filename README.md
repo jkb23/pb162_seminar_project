@@ -16,6 +16,7 @@ However, renaming vertices can completely change the topology without having to 
 
 1.  Define the natural order on the `Vertex2D` class according to the `equals() `method,
     i.e. it is sorted according to the X coordinate in ascending order and in case of a match it is sorted by Y in ascending order.
+	> For primitive types, there are static comparison methods, such as `Double.compare`.
 
 2.  Create `VertexInverseComparator` for the `Vertex2D` class in the package `cz.muni.fi.pb162.project.comparator`.
     The comparator will sort the vertices by **descending**, first sort by X coordinate descending, and in case of a match, sort Y by descending.
@@ -53,10 +54,8 @@ However, renaming vertices can completely change the topology without having to 
     *   `Collection<Vertex2D> getSortedVertices(Comparator<Vertex2D> comparator)` takes any 2D vertex comparator and returns vertices sorted by that comparator without duplication.
 
     Finally, the `Collection<Vertex2D> duplicateVertices()` method returns a set of vertices that are stored multiple times under different names in the polygon.
-> If we do not return a new collection, we need to return the collection as unmodifiable.
 
-4. Create a **nested** class `Builder`, ie `LabeledPolygon.Builder`.
-   The class will be static, ie no instance of the `LabeledPolygon` class is required to use it.
+4. Create a **nested** utility class `Builder`, i.e., `LabeledPolygon.Builder`.
    This class will take care of creating the polygon.
    *   The class will implement the `Buildable` interface.
    *   The `Builder addVertex(String label, Vertex2D vert)` method saves the vertex under the given name.
@@ -77,8 +76,6 @@ However, renaming vertices can completely change the topology without having to 
 
 ### Hints
 
-- For primitive types, there are static comparison methods, such as `Double.compare`.
-- For the static internal class `Builder`, just call `LabeledPolygon.Builder()` instead of `LabeledPolygon().Builder()`.
 
 ### Target UML class diagram:
 
