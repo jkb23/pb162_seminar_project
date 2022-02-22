@@ -46,11 +46,11 @@ public class Vertex2D {
 
     /**
      *
-     * @param vertex
+     * @param vertex to move with
      */
 
     public void move(Vertex2D vertex){
-        this.x = this.x + vertex.x;
-        this.y = this.y + vertex.y;
+        this.x += vertex.x;
+        this.y += vertex.y;
     }
 }
