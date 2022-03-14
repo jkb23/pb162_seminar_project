@@ -4,15 +4,17 @@ package cz.muni.fi.pb162.project.geometry;
  * @author Matus Jakab
  */
 public class Triangle {
-    private Vertex2D[] verArray = new Vertex2D[3];
-    private Triangle[] triArray = new Triangle[3];
+    private final Vertex2D[] verArray = new Vertex2D[3];
+    private final Triangle[] triArray = new Triangle[3];
+    private final double toleration = 0.001;
 
     /**
      *
-     * @param first vertex
-     * @param second vertex
-     * @param third vertex
+     * @param first point of triangle
+     * @param second point of triangle
+     * @param third point of triangle
      */
+
     public Triangle(Vertex2D first, Vertex2D second, Vertex2D third){
         verArray[0] = first;
         verArray[1] = second;
@@ -21,8 +23,22 @@ public class Triangle {
 
     /**
      *
-     * @param index which one
-     * @return selected vertex
+     * @param first point of triangle
+     * @param second point of triangle
+     * @param third point of triangle
+     * @param depth recursion depth
+     */
+
+    public Triangle(Vertex2D first, Vertex2D second, Vertex2D third, int depth){
+        this(first, second, third);
+        divide(depth);
+
+    }
+
+    /**
+     *
+     * @param index which from array
+     * @return vertex
      */
 
     public Vertex2D getVertex(int index){
@@ -30,19 +46,6 @@ public class Triangle {
             return null;
         }
         return this.verArray[index];
-    }
-
-    /**
-     *
-     * @param index which one
-     * @param vertex new vertex
-     */
-
-    public void setVertex(int index, Vertex2D vertex){
-        if (index > 2 || index < 0){
-            return;
-        }
-        this.verArray[index] = vertex;
     }
 
     /**
@@ -87,19 +90,45 @@ public class Triangle {
         if (this.isDivided()) {
             return false;
         }
-        Vertex2D zToO = this.getVertex(0).createMiddle(this.getVertex(1));
-        Vertex2D zToT = this.getVertex(0).createMiddle(this.getVertex(2));
-        Vertex2D tToO = this.getVertex(2).createMiddle(this.getVertex(1));
+        
+        Vertex2D ab = this.getVertex(0).createMiddle(this.getVertex(1));
+        Vertex2D ac = this.getVertex(0).createMiddle(this.getVertex(2));
+        Vertex2D bc = this.getVertex(2).createMiddle(this.getVertex(1));
 
-        Triangle f = new Triangle(this.getVertex(0), zToO, zToT);
-        Triangle s = new Triangle(this.getVertex(1), zToO, tToO);
-        Triangle t = new Triangle(this.getVertex(2), zToT, tToO);
-
-        triArray[0] = f;
-        triArray[1] = s;
-        triArray[2] = t;
+        triArray[0] = new Triangle(this.getVertex(0), ab, ac);
+        triArray[1] = new Triangle(this.getVertex(1), ab, bc);
+        triArray[2] = new Triangle(this.getVertex(2), ac, bc);
 
         return true;
+    }
+
+    /**
+     *
+     * @param depth end of a recursion
+     */
+
+    public void divide(int depth){
+        if (depth <= 0){
+            return ;
+        }
+
+        divide();
+        triArray[0].divide(depth - 1);
+        triArray[1].divide(depth - 1);
+        triArray[2].divide(depth - 1);
+    }
+
+    /**
+     *
+     * @return true if the triangle is equilateral
+     */
+
+    public boolean isEquilateral(){
+        double x = this.verArray[0].distance(verArray[1]);
+        double y = this.verArray[0].distance(verArray[2]);
+        double z = this.verArray[1].distance(verArray[2]);
+
+        return Math.abs(x - y) < toleration && Math.abs(x - z) < toleration;
     }
 
 }

@@ -4,16 +4,8 @@ package cz.muni.fi.pb162.project.geometry;
  * @author Matus Jakab
  */
 public class Vertex2D {
-    private double x;
-    private double y;
-
-    public void setX(double x){
-        this.x = x;
-    }
-
-    public void setY(double y){
-        this.y = y;
-    }
+    private final double x;
+    private final double y;
 
     public double getX() {
         return this.x;
@@ -60,10 +52,25 @@ public class Vertex2D {
      */
 
     public Vertex2D createMiddle(Vertex2D vert) {
-        Vertex2D newVertex = new Vertex2D();
-        newVertex.setX((this.getX() + vert.getX()) / 2);
-        newVertex.setY((this.getY() + vert.getY()) / 2);
+        return new Vertex2D((this.getX() + vert.getX()) / 2,
+                (this.getY() + vert.getY()) / 2);
+    }
 
-        return newVertex;
+    /**
+     *
+     * @param vertex another vertex
+     * @return Euclidean distance as double
+     */
+
+    public double distance(Vertex2D vertex){
+        if (vertex == null){
+            return -1.0;
+        }
+
+        var x2 = vertex.getX();
+        var x1 = this.getX();
+        var y2 = vertex.getY();
+        var y1 = this.getY();
+        return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
     }
 }
