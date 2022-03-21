@@ -17,8 +17,8 @@ public class Vertex2D {
 
     /**
      *
-     * @param x coordinte x
-     * @param y coordinte y
+     * @param x coordinate x
+     * @param y coordinate y
      */
 
     public Vertex2D(double x, double y){
@@ -47,7 +47,7 @@ public class Vertex2D {
 
     /**
      *
-     * @param vert vertex we want create middle with
+     * @param vert vertex we want to create middle with
      * @return the middle
      */
 
