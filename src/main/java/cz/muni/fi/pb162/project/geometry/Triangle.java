@@ -1,9 +1,11 @@
 package cz.muni.fi.pb162.project.geometry;
 
+import cz.muni.fi.pb162.project.utils.SimpleMath;
+
 /**
  * @author Matus Jakab
  */
-public class Triangle {
+public class Triangle implements Measurable {
     private final Vertex2D[] verArray = new Vertex2D[3];
     private final Triangle[] triArray = new Triangle[3];
     private final double toleration = 0.001;
@@ -46,6 +48,26 @@ public class Triangle {
             return null;
         }
         return this.verArray[index];
+    }
+
+    /**
+     *
+     * @return width of triangle
+     */
+    public double getWidth(){
+        double min = SimpleMath.minX(this);
+        double max = SimpleMath.maxX(this);
+        return max - min;
+    }
+
+    /**
+     *
+     * @return height of triangle
+     */
+    public double getHeight(){
+        double min = SimpleMath.minY(this);
+        double max = SimpleMath.maxY(this);
+        return max - min;
     }
 
     /**
