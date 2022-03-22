@@ -3,26 +3,14 @@ package cz.muni.fi.pb162.project.geometry;
 /**
  * @author Matus Jakab
  */
-public class Square implements Circular {
-    private final Vertex2D center;
-    private final double diameter;
-
-    public Vertex2D getCenter(){
-        return this.center;
-    }
-
-    public double getRadius(){
-        return this.diameter / 2;
-    }
-
+public class Square extends GeneralRegularPolygon {
     /**
      *
      * @param center center of vertex
      * @param diameter diameter of vertex
      */
     public Square(Vertex2D center, double diameter){
-        this.center = center;
-        this.diameter = diameter;
+        super(center, 4, diameter / 2);
     }
 
     /**
@@ -33,12 +21,13 @@ public class Square implements Circular {
         this(obj.getCenter(), obj.getRadius() * 2);
     }
 
+
     /**
      *
      * @param index which vertex to get
      * @return vertex coordinates or null
      */
-    public Vertex2D getVertex(int index){
+    /*public Vertex2D getVertex(int index){
         switch (index) {
             case 0:
                 return new Vertex2D(this.getCenter().getX() - this.getRadius(), this.getCenter().getY());
@@ -51,7 +40,7 @@ public class Square implements Circular {
             default:
                 return null;
         }
-    }
+    }*/
 
     /**
      *
