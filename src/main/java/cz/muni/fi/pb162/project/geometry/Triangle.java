@@ -1,14 +1,10 @@
 package cz.muni.fi.pb162.project.geometry;
 
-import cz.muni.fi.pb162.project.utils.SimpleMath;
-
 /**
  * @author Matus Jakab
  */
-public class Triangle implements Measurable {
-    private final Vertex2D[] verArray = new Vertex2D[3];
+public class Triangle extends ArrayPolygon {
     private final Triangle[] triArray = new Triangle[3];
-    private final double toleration = 0.001;
 
     /**
      *
@@ -18,9 +14,7 @@ public class Triangle implements Measurable {
      */
 
     public Triangle(Vertex2D first, Vertex2D second, Vertex2D third){
-        verArray[0] = first;
-        verArray[1] = second;
-        verArray[2] = third;
+        super(new Vertex2D[] {first, second, third});
     }
 
     /**
@@ -35,39 +29,6 @@ public class Triangle implements Measurable {
         this(first, second, third);
         divide(depth);
 
-    }
-
-    /**
-     *
-     * @param index which from array
-     * @return vertex
-     */
-
-    public Vertex2D getVertex(int index){
-        if (index > 2 || index < 0) {
-            return null;
-        }
-        return this.verArray[index];
-    }
-
-    /**
-     *
-     * @return width of triangle
-     */
-    public double getWidth(){
-        double min = SimpleMath.minX(this);
-        double max = SimpleMath.maxX(this);
-        return max - min;
-    }
-
-    /**
-     *
-     * @return height of triangle
-     */
-    public double getHeight(){
-        double min = SimpleMath.minY(this);
-        double max = SimpleMath.maxY(this);
-        return max - min;
     }
 
     /**
@@ -99,8 +60,8 @@ public class Triangle implements Measurable {
 
     @Override
     public String toString(){
-        return ("Triangle: vertices=" + this.verArray[0].toString() + " " +
-                this.verArray[1].toString() + " " + this.verArray[2].toString());
+        return ("Triangle: vertices=" + this.getVertex(0).toString() + " " +
+                this.getVertex(1).toString() + " " + this.getVertex(2).toString());
     }
 
     /**
@@ -146,9 +107,10 @@ public class Triangle implements Measurable {
      */
 
     public boolean isEquilateral(){
-        double x = this.verArray[0].distance(verArray[1]);
-        double y = this.verArray[0].distance(verArray[2]);
-        double z = this.verArray[1].distance(verArray[2]);
+        double toleration = 0.001;
+        double x = this.getVertex(0).distance(getVertex(1));
+        double y = this.getVertex(0).distance(getVertex(2));
+        double z = this.getVertex(1).distance(getVertex(2));
 
         return Math.abs(x - y) < toleration && Math.abs(x - z) < toleration;
     }
