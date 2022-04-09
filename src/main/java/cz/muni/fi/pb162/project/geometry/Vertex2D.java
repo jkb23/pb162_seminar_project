@@ -1,5 +1,7 @@
 package cz.muni.fi.pb162.project.geometry;
 
+import java.util.Objects;
+
 /**
  * @author Matus Jakab
  */
@@ -72,5 +74,22 @@ public class Vertex2D {
         var y2 = vertex.getY();
         var y1 = this.getY();
         return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()){
+            return false;
+        }
+        Vertex2D vertex2D = (Vertex2D) o;
+        return Double.compare(vertex2D.x, x) == 0 && Double.compare(vertex2D.y, y) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y);
     }
 }
