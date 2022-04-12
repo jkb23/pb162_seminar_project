@@ -28,4 +28,24 @@ public abstract class SimplePolygon implements Polygon {
         return ret.toString();
     }
 
+    /**
+     *
+     * @param array array of vertices
+     */
+    public SimplePolygon(Vertex2D[] array){
+        if (array == null){
+            throw new IllegalArgumentException("array is null");
+        }
+
+        for (Vertex2D v: array){
+            if (v == null){
+                throw new IllegalArgumentException("array contains null");
+            }
+        }
+
+        if (array.length == 0){
+            throw new IllegalArgumentException("array length is 0");
+        }
+    }
+
 }
