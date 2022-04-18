@@ -13,20 +13,7 @@ public class ArrayPolygon extends SimplePolygon{
      * @param array array of vertices
      */
     public ArrayPolygon(Vertex2D[] array){
-        if (array == null){
-            throw new IllegalArgumentException("array is null");
-        }
-
-        for (Vertex2D v: array){
-            if (v == null){
-                throw new IllegalArgumentException("array contains null");
-            }
-        }
-
-        if (array.length < 3){
-            throw new IllegalArgumentException("arrays length is lower than 3");
-        }
-
+        super(array);
         this.array = Arrays.copyOf(array, array.length);
     }
 
