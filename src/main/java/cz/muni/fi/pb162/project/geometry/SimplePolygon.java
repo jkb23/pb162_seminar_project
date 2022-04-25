@@ -1,5 +1,6 @@
 package cz.muni.fi.pb162.project.geometry;
 
+import cz.muni.fi.pb162.project.exception.MissingVerticesException;
 import cz.muni.fi.pb162.project.utils.SimpleMath;
 
 /**
@@ -32,7 +33,7 @@ public abstract class SimplePolygon implements Polygon {
      *
      * @param array array of vertices
      */
-    public SimplePolygon(Vertex2D[] array){
+    public SimplePolygon(Vertex2D[] array) throws MissingVerticesException {
         if (array == null){
             throw new IllegalArgumentException("array is null");
         }
@@ -43,8 +44,8 @@ public abstract class SimplePolygon implements Polygon {
             }
         }
 
-        if (array.length == 0){
-            throw new IllegalArgumentException("array length is 0");
+        if (array.length < 3){
+            throw new MissingVerticesException("array length is less than 3");
         }
     }
 
