@@ -21,27 +21,6 @@ public class Square extends GeneralRegularPolygon {
         this(obj.getCenter(), obj.getRadius() * 2);
     }
 
-
-    /**
-     *
-     * @param index which vertex to get
-     * @return vertex coordinates or null
-     */
-    /*public Vertex2D getVertex(int index){
-        switch (index) {
-            case 0:
-                return new Vertex2D(this.getCenter().getX() - this.getRadius(), this.getCenter().getY());
-            case 1:
-                return new Vertex2D(this.getCenter().getX(), this.getCenter().getY() - this.getRadius());
-            case 2:
-                return new Vertex2D(this.getCenter().getX() + this.getRadius(), this.getCenter().getY());
-            case 3:
-                return new Vertex2D(this.getCenter().getX(), this.getCenter().getY() + this.getRadius());
-            default:
-                return null;
-        }
-    }*/
-
     /**
      *
      * @return formatted string
